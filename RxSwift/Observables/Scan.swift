@@ -95,6 +95,7 @@ final fileprivate class Scan<Element, Accumulate>: Producer<Accumulate> {
     
     override func run<O : ObserverType>(_ observer: O, cancel: Cancelable) -> (sink: Disposable, subscription: Disposable) where O.E == Accumulate {
         let sink = ScanSink(parent: self, observer: observer, cancel: cancel)
+        sink.forwardOn(.next(_seed))
         let subscription = _source.subscribe(sink)
         return (sink: sink, subscription: subscription)
     }

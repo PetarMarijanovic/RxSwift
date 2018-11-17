@@ -577,7 +577,7 @@ extension SharedSequenceOperatorTests {
             XCTAssertTrue(hotObservable.subscriptions == [UnsunscribedFromHotObservable])
         }
 
-        XCTAssertEqual(results, [1, 3, 2])
+        XCTAssertEqual(results, [0, 1, 3, 2])
     }
 
 }
